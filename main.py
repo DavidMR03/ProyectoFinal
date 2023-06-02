@@ -32,4 +32,25 @@ class Triqui:
             return self.tablero[0][2]
         
         return None
-
+    
+    def Jugar(self):
+        while True:
+            self.imprimir_tablero()
+            print(f"Turno de {self.jugador}.")
+            fila = int(input('Ingresa la posición de la fila (0-2): '))
+            col = int(input('Ingresa la posición de la columna (0-2): '))
+            
+            self.enLinea(fila, col)
+            
+            ganador = self.Verificar_Ganador()
+            if ganador:
+                self.imprimir_tablero()
+                print(f'{ganador} gana!')
+                break
+            
+            if all(cell != ' ' for fila in self.tablero for cell in fila):
+                self.imprimir_tablero()
+                print("¡Empate!")
+                break
+    game = Triqui()
+    game.Jugar()
