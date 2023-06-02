@@ -18,3 +18,18 @@ class Triqui:
         else:
             print('Movimiento invalido. Intenta de nuevo.')
 
+    def Verificar_Ganador(self):
+        for fila in self.tablero:
+            if fila[0] == fila[1] == fila[2] != ' ':
+                return fila[0]
+        for col in range(3):
+            if self.tablero[0][col] == self.tablero[1][col] == self.tablero[2][col] != ' ':
+                return self.tablero[0][col]
+        if self.tablero[0][0] == self.tablero[1][1] == self.tablero[2][2] != ' ':
+            return self.tablero[0][0]
+        
+        if self.tablero[0][2] == self.tablero[1][1] == self.tablero[2][0] != ' ':
+            return self.tablero[0][2]
+        
+        return None
+
